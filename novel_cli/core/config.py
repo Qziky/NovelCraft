@@ -5,7 +5,6 @@ from pathlib import Path
 from pydantic import Field
 from pydantic_settings import BaseSettings
 
-
 CONFIG_DIR = Path.home() / ".novelcraft"
 CONFIG_FILE = CONFIG_DIR / "config.json"
 

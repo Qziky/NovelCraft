@@ -1,9 +1,8 @@
 import json
 import os
-from pathlib import Path
 from unittest.mock import patch
 
-from novel_cli.core.config import Settings, load_config, save_config, CONFIG_FIELDS
+from novel_cli.core.config import CONFIG_FIELDS, Settings, load_config, save_config
 
 
 def test_save_and_load_config(tmp_path):

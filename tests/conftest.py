@@ -4,8 +4,6 @@ from pathlib import Path
 import pytest
 from typer.testing import CliRunner
 
-from novel_cli.main import app
-
 
 def pytest_configure(config):
     config.option.basetemp = Path(__file__).parent / ".pytest_tmp"
@@ -31,7 +29,11 @@ def mock_config(tmp_path, monkeypatch):
     config_dir = tmp_path / "novelcraft"
     config_dir.mkdir()
     config_file = config_dir / "config.json"
-    config_file.write_text('{"api_key": "sk-test-key", "base_url": "https://api.test.com/v1", "model": "test-model", "system_prompt": "测试提示"}', encoding="utf-8")
+    config_file.write_text(
+        '{"api_key": "sk-test-key", "base_url": "https://api.test.com/v1",'
+        ' "model": "test-model", "system_prompt": "测试提示"}',
+        encoding="utf-8"
+    )
     monkeypatch.setattr("novel_cli.core.config.CONFIG_DIR", config_dir)
     monkeypatch.setattr("novel_cli.core.config.CONFIG_FILE", config_file)
     return config_file

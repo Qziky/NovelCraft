@@ -1,7 +1,3 @@
-import json
-import tempfile
-from pathlib import Path
-from unittest.mock import patch
 
 from novel_cli.core.config import Settings, mask_key
 

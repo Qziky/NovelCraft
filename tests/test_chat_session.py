@@ -1,5 +1,3 @@
-import json
-import tempfile
 from pathlib import Path
 
 from novel_cli.core.chat_session import ChatSession

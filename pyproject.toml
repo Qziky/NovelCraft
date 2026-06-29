@@ -39,10 +39,10 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/your-username/novelcraft"
-Repository = "https://github.com/your-username/novelcraft"
-Issues = "https://github.com/your-username/novelcraft/issues"
-Changelog = "https://github.com/your-username/novelcraft/blob/main/CHANGELOG.md"
+Homepage = "https://github.com/Qziky/NovelCraft"
+Repository = "https://github.com/Qziky/NovelCraft"
+Issues = "https://github.com/Qziky/NovelCraft/issues"
+Changelog = "https://github.com/Qziky/NovelCraft/blob/main/CHANGELOG.md"
 
 [project.scripts]
 novelcraft = "novel_cli.main:app"

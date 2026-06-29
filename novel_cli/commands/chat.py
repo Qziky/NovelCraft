@@ -1,4 +1,3 @@
-from pathlib import Path
 from typing import Optional
 
 import typer
@@ -48,7 +47,7 @@ def _handle_slash_command(cmd: str, session: ChatSession, output_file: Optional[
             print_error("用法: /system <prompt>")
             return None
         session.update_system_prompt(arg)
-        print_success(f"系统提示词已更新")
+        print_success("系统提示词已更新")
         return None
 
     if command == "/help":
@@ -98,7 +97,7 @@ def _run_chat_loop(session: ChatSession, config, output_file: Optional[str]) -> 
             print_info("（响应已中断）")
         except Exception as e:
             print_error(f"请求失败: {e}")
-            print_info("请检查网络连接和 API 配置。使用 `novel-cli config show` 查看当前配置。")
+            print_info("请检查网络连接和 API 配置。使用 `novelcraft config show` 查看当前配置。")
 
 
 @app.callback(invoke_without_command=True)
@@ -111,7 +110,7 @@ def chat(
 
     if not config.api_key:
         print_error("API 密钥未配置")
-        print_info("请先配置 API 密钥: novel-cli config set --api-key <your-key>")
+        print_info("请先配置 API 密钥: novelcraft config set --api-key <your-key>")
         raise typer.Exit(1)
 
     if load:

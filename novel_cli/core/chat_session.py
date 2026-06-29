@@ -1,7 +1,6 @@
 import json
 from datetime import datetime
 from pathlib import Path
-from typing import Optional
 
 
 class ChatSession:
@@ -33,27 +32,31 @@ class ChatSession:
         return self.messages
 
     def to_markdown(self) -> str:
-        lines = [f"# NovelCraft 对话记录", f"", f"生成时间: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}", f"", f"---", f""]
+        lines = [
+            "# NovelCraft 对话记录", "",
+            f"生成时间: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}",
+            "", "---", ""
+        ]
         for msg in self.messages:
             if msg["role"] == "system":
-                lines.append(f"## 📋 System Prompt")
-                lines.append(f"")
+                lines.append("## 📋 System Prompt")
+                lines.append("")
                 lines.append(msg["content"])
-                lines.append(f"")
-                lines.append(f"---")
-                lines.append(f"")
+                lines.append("")
+                lines.append("---")
+                lines.append("")
             elif msg["role"] == "user":
-                lines.append(f"## 👤 User")
-                lines.append(f"")
+                lines.append("## 👤 User")
+                lines.append("")
                 lines.append(msg["content"])
-                lines.append(f"")
+                lines.append("")
             elif msg["role"] == "assistant":
-                lines.append(f"## 🤖 Assistant")
-                lines.append(f"")
+                lines.append("## 🤖 Assistant")
+                lines.append("")
                 lines.append(msg["content"])
-                lines.append(f"")
-                lines.append(f"---")
-                lines.append(f"")
+                lines.append("")
+                lines.append("---")
+                lines.append("")
         return "\n".join(lines)
 
     def save(self, filepath: str) -> Path:

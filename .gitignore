@@ -16,6 +16,8 @@ novel_outline.md
 novel_chat.md
 generate_novel.py
 *.txt
+chapters_outline.json
+consistency_report.md
 
 # IDE
 .idea/

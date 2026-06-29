@@ -1,9 +1,6 @@
 import json
 import re
-from pathlib import Path
-from unittest.mock import patch
 
-import typer
 from typer.testing import CliRunner
 
 from novel_cli.main import app
@@ -39,42 +36,48 @@ def test_help_command():
 def test_outline_help():
     result = runner.invoke(app, ["outline", "--help"])
     assert result.exit_code == 0
-    assert "--prompt" in result.output
-    assert "--chapters" in result.output
+    output = strip_ansi(result.output)
+    assert "--prompt" in output
+    assert "--chapters" in output
 
 
 def test_generate_help():
     result = runner.invoke(app, ["generate", "--help"])
     assert result.exit_code == 0
-    assert "--outline" in result.output
-    assert "--words" in result.output
+    output = strip_ansi(result.output)
+    assert "--outline" in output
+    assert "--words" in output
 
 
 def test_write_help():
     result = runner.invoke(app, ["write", "--help"])
     assert result.exit_code == 0
-    assert "--outline" in result.output
-    assert "--resume" in result.output
-    assert "--characters" in result.output
+    output = strip_ansi(result.output)
+    assert "--outline" in output
+    assert "--resume" in output
+    assert "--characters" in output
 
 
 def test_continue_help():
     result = runner.invoke(app, ["continue", "--help"])
     assert result.exit_code == 0
-    assert "--input" in result.output
+    output = strip_ansi(result.output)
+    assert "--input" in output
 
 
 def test_edit_help():
     result = runner.invoke(app, ["edit", "--help"])
     assert result.exit_code == 0
-    assert "--action" in result.output
-    assert "polish" in result.output
+    output = strip_ansi(result.output)
+    assert "--action" in output
+    assert "polish" in output
 
 
 def test_chat_help():
     result = runner.invoke(app, ["chat", "--help"])
     assert result.exit_code == 0
-    assert "--system" in result.output
+    output = strip_ansi(result.output)
+    assert "--system" in output
 
 
 def test_outline_missing_prompt(mock_config):

@@ -86,7 +86,8 @@ def generate_chapter(
 {characters}
 """ if characters else ""
 
-    user_msg = f"""请创作第{num}章「{title}」的完整正文。
+    if characters:
+        user_msg = f"""请创作第{num}章「{title}」的完整正文。
 
 本章大纲：{outline}
 
@@ -99,7 +100,9 @@ def generate_chapter(
 4. 保持与前文的连贯性
 5. 只输出正文内容，不要输出章节标题以外的元信息
 6. 以 "## 第{num}章 {title}" 作为开头
-7. 所有人物的姓名、身份、关系必须严格按照人物表，不得自由发挥""" if characters else f"""请创作第{num}章「{title}」的完整正文。
+7. 所有人物的姓名、身份、关系必须严格按照人物表，不得自由发挥"""
+    else:
+        user_msg = f"""请创作第{num}章「{title}」的完整正文。
 
 本章大纲：{outline}
 
@@ -126,7 +129,10 @@ def generate_chapter(
             messages.append(
                 {
                     "role": "user",
-                    "content": f"当前内容约{len(full_content)}字，请继续创作本章后续内容，直到本章完整结束。再写至少1500字。",
+                    "content": (
+                        f"当前内容约{len(full_content)}字，请继续创作本章后续内容，"
+                        "直到本章完整结束。再写至少1500字。"
+                    ),
                 }
             )
 
@@ -280,7 +286,7 @@ def write(
                     "chars": len(
                         all_contents[i].replace(" ", "").replace("\n", "")
                     ),
-                    "file": str(output_dir / f"chapter_{ch['num']:02d}.txt"),
+                    "file": str(output_dir / f"chapter_{ch['num']:02d}.txt").replace("\\", "/"),
                 }
                 for i, ch in enumerate(chapters)
             ],

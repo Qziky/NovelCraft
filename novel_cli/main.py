@@ -1,13 +1,13 @@
 import typer
 
 from novel_cli import __version__
+from novel_cli.commands.chat import app as chat_app
 from novel_cli.commands.config import app as config_app
-from novel_cli.commands.outline import app as outline_app
-from novel_cli.commands.generate import app as generate_app
 from novel_cli.commands.continue_ import app as continue_app
 from novel_cli.commands.edit import app as edit_app
+from novel_cli.commands.generate import app as generate_app
+from novel_cli.commands.outline import app as outline_app
 from novel_cli.commands.write import app as write_app
-from novel_cli.commands.chat import app as chat_app
 from novel_cli.core.exceptions import NovelCraftError
 from novel_cli.utils.display import print_error
 

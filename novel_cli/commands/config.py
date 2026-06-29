@@ -2,7 +2,7 @@ from typing import Optional
 
 import typer
 
-from novel_cli.core.config import load_config, save_config, mask_key
+from novel_cli.core.config import load_config, mask_key, save_config
 
 app = typer.Typer(help="管理配置（API key、模型、URL 等）")
 

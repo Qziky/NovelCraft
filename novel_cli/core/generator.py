@@ -63,7 +63,6 @@ def run_stream(
             return full_response
         except Exception as e:
             last_error = e
-            error_class = _classify_api_error(e)
             if attempt < max_retries - 1:
                 delay = retry_base_delay * (2 ** attempt)
                 if not quiet:
