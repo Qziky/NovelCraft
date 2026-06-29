@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "novelcraft"
 dynamic = ["version"]
-description = "AI-powered CLI tool for novel writing - AI 驱动的长篇小说创作命令行工具"
+description = "AI-powered CLI for Chinese long-form novel writing with outlines, chapter generation, resume support, and OpenAI-compatible models"
 readme = "README.md"
 license = {text = "MIT"}
 requires-python = ">=3.10"
