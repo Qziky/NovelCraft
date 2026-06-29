@@ -1,0 +1,25 @@
+.venv/
+__pycache__/
+*.pyc
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+.pytest_tmp/
+.trae/
+
+# Generated output
+novel_chapters/
+novel_final.md
+novel_full.md
+novel_outline.md
+novel_chat.md
+generate_novel.py
+*.txt
+
+# IDE
+.idea/
+.vscode/
+
+# Environment
+.env
