@@ -27,19 +27,22 @@ class Settings(BaseSettings):
     }
 
 
-def _load_file_values() -> dict:
+def _load_file_values() -> dict[str, str]:
     if not CONFIG_FILE.exists():
         return {}
     try:
         with open(CONFIG_FILE, "r", encoding="utf-8") as f:
-            return json.load(f)
+            data: object = json.load(f)
     except (json.JSONDecodeError, IOError):
         return {}
+    if not isinstance(data, dict):
+        return {}
+    return {key: value for key, value in data.items() if isinstance(key, str) and isinstance(value, str)}
 
 
 def load_config() -> Settings:
     file_values = _load_file_values()
-    merged = {}
+    merged: dict[str, str] = {}
     for field in CONFIG_FIELDS:
         env_key = f"NOVEL_CLI_{field.upper()}"
         env_val = os.environ.get(env_key)

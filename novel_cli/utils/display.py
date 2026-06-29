@@ -1,3 +1,5 @@
+from typing import cast
+
 from rich.console import Console
 from rich.panel import Panel
 from rich.text import Text
@@ -70,4 +72,4 @@ def print_help() -> None:
 
 
 def prompt_input(prompt: str = "👤 You: ") -> str:
-    return console.input(f"[user]{prompt}[/user]")
+    return cast(str, console.input(f"[user]{prompt}[/user]"))
